@@ -15,10 +15,10 @@ class AdelieDebugCompiler_Application
 
 	protected $config = array(
 		'phpCommand' => 'php',
+		'outputFile' => 'build/AdelieDebug.class.php',
 	);
 
 	protected $temporaryFileManager = null;
-	protected $compresser = null;
 	protected $syntaxChecker = null;
 
 	protected $source = '';
@@ -37,7 +37,6 @@ class AdelieDebugCompiler_Application
 	{
 		$this->_setUpPaths();
 		$this->_setUpTemporaryFileManager();
-		$this->_setUpCompresser();
 		$this->_setUpSyntaxChecker();
 	}
 
@@ -48,6 +47,7 @@ class AdelieDebugCompiler_Application
 			$this->_combinePhpFiles();
 			$this->_combineConfigFiles();
 			$this->_combineTemplateFiles();
+			$this->_minimize();
 			$this->_outputFile();
 		}
 		catch ( Exception $e )
@@ -77,11 +77,6 @@ class AdelieDebugCompiler_Application
 		$this->temporaryFileManager = new AdelieDebugCompiler_TemporaryFileManager();
 	}
 
-	protected function _setUpCompresser()
-	{
-		$this->compresser = new AdelieDebugCompiler_Compresser($this);
-	}
-
 	protected function _setUpSyntaxChecker()
 	{
 		$this->syntaxChecker = new AdelieDebugCompiler_SyntaxChecker($this);
@@ -108,11 +103,21 @@ class AdelieDebugCompiler_Application
 		$this->source .= $combiner->getContents();
 	}
 
+	protected function _minimize()
+	{
+		$source = "<?php define('ADELIE_DEBUG_BUILD', true); ".$this->source;
+		$compresser = new AdelieDebugCompiler_Compresser($this);
+		$this->source = $compresser->compressPHP($source);
+	}
+
 	protected function _outputFile()
 	{
-		$source = "<?php define('ADELIE_DEBUG_BUILD', true);";
-		$source .= $this->source;
+		$filename = $this->config('outputFile');
+		$writtenBytes = file_put_contents($filename, $this->source);
 		
-		echo $source;
+		if ( $writtenBytes === false )
+		{
+			throw new RuntimeException("Failed to write file: $filename");
+		}
 	}
 }
