@@ -105,7 +105,8 @@ class AdelieDebugCompiler_Application
 
 	protected function _minimize()
 	{
-		$source = "<?php define('ADELIE_DEBUG_BUILD', true); ".$this->source;
+		$now    = time();
+		$source = "<?php define('ADELIE_DEBUG_BUILD', true); define('ADELIE_DEBUG_BUILD_TIME', $now);".$this->source;
 		$compresser = new AdelieDebugCompiler_Compresser($this);
 		$this->source = $compresser->compressPHP($source);
 	}
