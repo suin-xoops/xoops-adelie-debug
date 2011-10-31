@@ -110,7 +110,8 @@ class AdelieDebugCompiler_Application
 
 	protected function _outputFile()
 	{
-		$source = '<?php '.$this->source;
+		$source = "<?php define('ADELIE_DEBUG_BUILD', true);";
+		$source .= $this->source;
 		
 		echo $source;
 	}
