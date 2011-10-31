@@ -27,7 +27,7 @@ class AdelieDebugCompiler_Combiner_Config extends AdelieDebugCompiler_Combiner
 		}
 
 		$configs = var_export($configs, true);
-		$class = sprintf('class AdelieDebug_Compiled_Config { public $configs = %s; }', $configs);
+		$class = sprintf('class AdelieDebug_Compiled_Config { public static $configs = %s; }', $configs);
 		
 		if ( $this->app->syntaxChecker->checkCode($class) === false )
 		{
