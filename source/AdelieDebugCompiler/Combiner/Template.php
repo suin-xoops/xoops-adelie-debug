@@ -15,10 +15,10 @@ class AdelieDebugCompiler_Combiner_Template extends AdelieDebugCompiler_Combiner
 
 	public function run()
 	{
-		$templateDir   = $this->targetDir.'/Template';
+		$templateDir   = $this->targetDir;
 		$templateFiles = $this->_find($templateDir, $this->targetExtensions);
 
-		$start = strlen($templateDir) + 1;
+		$start = strlen($this->targetDir) + 1;
 
 		$templates = array();
 

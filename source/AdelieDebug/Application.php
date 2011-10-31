@@ -55,8 +55,20 @@ class AdelieDebug_Application extends AdelieDebug_Core_Application
 			return;
 		}
 
-		$this->config = AdelieDebug_Build_Config::$config['Config'];
+		$this->config = AdelieDebug_Build_Config::$configs['Config'];
 		$this->config['render.class'] = $this->config['render.class'].'OnBuild';
+	}
+
+	protected function _setUpRoutes()
+	{
+		if ( $this->isBuild() === false )
+		{
+			parent::_setUpRoutes();
+			return;
+		}
+
+		$routes = AdelieDebug_Build_Config::$configs['Route'];
+		$this->router->setRoutes($routes);
 	}
 
 	protected function _resolve()

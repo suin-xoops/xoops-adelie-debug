@@ -16,6 +16,12 @@ class AdelieDebugCompiler_Application
 	protected $config = array(
 		'phpCommand' => 'php',
 		'outputFile' => 'build/AdelieDebug.class.php',
+		'preloadClass' => 'AdelieDebug',
+	);
+
+	protected $depends = array(
+		"XOOPS_ROOT_PATH.'/class/logger.php'",
+		"XOOPS_ROOT_PATH.'/class/smarty/Smarty.class.php'",
 	);
 
 	protected $temporaryFileManager = null;
@@ -47,6 +53,10 @@ class AdelieDebugCompiler_Application
 			$this->_combinePhpFiles();
 			$this->_combineConfigFiles();
 			$this->_combineTemplateFiles();
+			$this->_addConstants();
+			$this->_addDependingFiles();
+			$this->_addPreloadClass();
+			$this->_finalize();
 			$this->_minimize();
 			$this->_outputFile();
 		}
@@ -103,12 +113,44 @@ class AdelieDebugCompiler_Application
 		$this->source .= $combiner->getContents();
 	}
 
-	protected function _minimize()
+	protected function _addConstants()
 	{
 		$now    = time();
-		$source = "<?php define('ADELIE_DEBUG_BUILD', true); define('ADELIE_DEBUG_BUILD_TIME', $now);".$this->source;
+		$source = "define('ADELIE_DEBUG_BUILD', true); define('ADELIE_DEBUG_BUILD_TIME', $now);";
+		$this->source = $source.$this->source;
+	}
+
+	protected function _addDependingFiles()
+	{
+		$source = '';
+	
+		foreach ( $this->depends as $depend )
+		{
+			$source .= sprintf("require_once %s;", $depend);
+		}
+		
+		$this->source = $source.$this->source;
+	}
+
+	protected function _addPreloadClass()
+	{
+		$preloadClass = $this->config('preloadClass');
+
+		if ( $preloadClass !== 'AdelieDebug_Preload' )
+		{
+			$this->source .= sprintf('class %s extends AdelieDebug_Preload {}', $preloadClass);
+		}
+	}
+
+	protected function _finalize()
+	{
+		$this->source = '<?php '.$this->source;
+	}
+
+	protected function _minimize()
+	{
 		$compresser = new AdelieDebugCompiler_Compresser($this);
-		$this->source = $compresser->compressPHP($source);
+//		$this->source = $compresser->compressPHP($this->source);
 	}
 
 	protected function _outputFile()
