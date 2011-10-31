@@ -24,9 +24,39 @@ class AdelieDebug_Application extends AdelieDebug_Core_Application
 		parent::setUp();
 	}
 
+	/**
+	 * setPathinfo function.
+	 * 
+	 * @access public
+	 * @param string $pathinfo
+	 * @return void
+	 */
 	public function setPathinfo($pathinfo)
 	{
 		$this->pathinfo = $pathinfo;
+	}
+
+	/**
+	 * isBuild function.
+	 * 
+	 * @access public
+	 * @return bool
+	 */
+	public function isBuild()
+	{
+		return defined('ADELIE_DEBUG_BUILD');
+	}
+
+	protected function _setUpConfig()
+	{
+		if ( $this->isBuild() === false )
+		{
+			parent::_setUpConfig();
+			return;
+		}
+
+		$this->config = AdelieDebug_Build_Config::$config['Config'];
+		$this->config['render.class'] = $this->config['render.class'].'OnBuild';
 	}
 
 	protected function _resolve()

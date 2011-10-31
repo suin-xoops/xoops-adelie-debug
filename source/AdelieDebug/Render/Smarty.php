@@ -13,18 +13,24 @@ class AdelieDebug_Render_Smarty extends AdelieDebug_Render
 {
 	public function render()
 	{
+		$template = $this->_getTempalte();
+		$values = $this->getValues();
+		$smarty = $this->_getSmarty();
+		$smarty->assign($values);
+		$result = $smarty->fetch($template);
+		return $result;
+	}
+
+	protected function _getTempalte()
+	{
 		$template = ADELIE_DEBUG_DIR.'/'.$this->template.'.tpl';
 
 		if ( file_exists($template) === false )
 		{
 			throw new RuntimeException("Template not found: ".$template);
 		}
-
-		$values = $this->getValues();
-		$smarty = $this->_getSmarty();
-		$smarty->assign($values);
-		$result = $smarty->fetch($template);
-		return $result;
+		
+		return $template;
 	}
 
 	protected function _getSmarty()

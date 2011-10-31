@@ -34,8 +34,12 @@ class AdelieDebug_Preload extends XCube_ActionFilter
 
 	protected function _bootstrap()
 	{
-		// TODO >> コンパイル時はこのメソッド不要
-		require_once dirname(__FILE__).'/AdelieDebug/Core/ClassLoader.php';
+		if ( defined('ADELIE_DEBUG_BUILD') === true )
+		{
+			return; // ビルドではこの処理は不要
+		}
+
+		require_once dirname(__FILE__).'/AdelieDebug/Core/ClassLoader.php'; // ビルド時は実行されない
 		$classLoader = new AdelieDebug_Core_ClassLoader();
 		$classLoader->setIncludePath(dirname(__FILE__));
 		$classLoader->register();

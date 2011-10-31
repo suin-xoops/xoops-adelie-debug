@@ -36,7 +36,7 @@ class AdelieDebugCompiler_Combiner_Template extends AdelieDebugCompiler_Combiner
 		}
 
 		$templates = var_export($templates, true);
-		$class = sprintf('class AdelieDebug_Compiled_Template { public static $sources = %s; }', $templates);
+		$class = sprintf('class AdelieDebug_Build_Template { public static $sources = %s; }', $templates);
 		
 		if ( $this->app->syntaxChecker->checkCode($class) === false )
 		{
