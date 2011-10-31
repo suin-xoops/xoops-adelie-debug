@@ -1,6 +1,6 @@
 <?php
 
-class AdelieDebug extends XCube_ActionFilter
+class AdelieDebug_Preload extends XCube_ActionFilter
 {
 	protected $debugger = null;
 

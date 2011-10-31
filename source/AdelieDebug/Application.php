@@ -22,22 +22,11 @@ class AdelieDebug_Application extends AdelieDebug_Core_Application
 	public function setUp()
 	{
 		parent::setUp();
-		$this->_setUpFunctions();
 	}
 
 	public function setPathinfo($pathinfo)
 	{
 		$this->pathinfo = $pathinfo;
-	}
-
-	protected function _setUpFunctions()
-	{
-		if ( defined('ADELIE_DEBUG_FUNCTION_LOADED') === true )
-		{
-			return;
-		}
-		
-		require_once ADELIE_DEBUG_DIR.'/Function.php';
 	}
 
 	protected function _resolve()

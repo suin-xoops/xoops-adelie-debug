@@ -60,6 +60,7 @@ class AdelieDebug_Debug_Main
 		$this->_setUpExceptionHandler();
 		$this->_setUpReporter(); // シャットダウン時にReporterをnewすると既にメモリが足りなくなっている可能性があるため予めメモリを確保しておく
 		$this->_setUpShutdown();
+		$this->_setUpFunctions();
 	}
 
 	protected function _setUpLogger()
@@ -89,5 +90,22 @@ class AdelieDebug_Debug_Main
 	{
 		$this->shutdown = new AdelieDebug_Debug_Shutdown($this->reporter);
 		$this->shutdown->register();
+	}
+
+	protected function _setUpFunctions()
+	{
+		AdelieDebug_Debug_Dump::setLogger($this->logger);
+		AdelieDebug_Debug_Trace::setLogger($this->logger);
+		$this->_loadFunctions();
+	}
+
+	protected function _loadFunctions()
+	{
+		if ( defined('ADELIE_DEBUG_FUNCTION_LOADED') === true )
+		{
+			return;
+		}
+		
+		require_once dirname(__FILE__).'/Function.php';
 	}
 }
