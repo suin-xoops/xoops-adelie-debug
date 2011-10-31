@@ -150,7 +150,7 @@ class AdelieDebugCompiler_Application
 	protected function _minimize()
 	{
 		$compresser = new AdelieDebugCompiler_Compresser($this);
-//		$this->source = $compresser->compressPHP($this->source);
+		$this->source = $compresser->compressPHP($this->source);
 	}
 
 	protected function _outputFile()
