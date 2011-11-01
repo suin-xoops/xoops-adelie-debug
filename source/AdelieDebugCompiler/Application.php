@@ -15,13 +15,7 @@ class AdelieDebugCompiler_Application
 
 	protected $config = array(
 		'phpCommand' => 'php',
-		'outputFile' => 'build/AdelieDebug.class.php',
 		'preloadClass' => 'AdelieDebug',
-	);
-
-	protected $depends = array(
-		"XOOPS_ROOT_PATH.'/class/logger.php'",
-		"XOOPS_ROOT_PATH.'/class/smarty/Smarty.class.php'",
 	);
 
 	protected $temporaryFileManager = null;
@@ -50,14 +44,13 @@ class AdelieDebugCompiler_Application
 	{
 		try
 		{
-			$this->_combinePhpFiles();
-			$this->_combineConfigFiles();
-			$this->_combineTemplateFiles();
+			$this->_initializeSource();
 			$this->_addConstants();
-			$this->_addDependingFiles();
+			$this->_addClassLoader();
 			$this->_addPreloadClass();
+			$this->_addArchive();
 			$this->_finalize();
-			$this->_minimize();
+//			$this->_minimize();
 			$this->_outputFile();
 		}
 		catch ( Exception $e )
@@ -92,59 +85,56 @@ class AdelieDebugCompiler_Application
 		$this->syntaxChecker = new AdelieDebugCompiler_SyntaxChecker($this);
 	}
 
-	protected function _combinePhpFiles()
+	protected function _initializeSource()
 	{
-		$combiner = new AdelieDebugCompiler_Combiner_PHP($this);
-		$combiner->run();
-		$this->source .= $combiner->getContents();
-	}
-
-	protected function _combineConfigFiles()
-	{
-		$combiner = new AdelieDebugCompiler_Combiner_Config($this);
-		$combiner->run();
-		$this->source .= $combiner->getContents();
-	}
-
-	protected function _combineTemplateFiles()
-	{
-		$combiner = new AdelieDebugCompiler_Combiner_Template($this);
-		$combiner->run();
-		$this->source .= $combiner->getContents();
+		$this->source = "<?php \n";
 	}
 
 	protected function _addConstants()
 	{
 		$now    = time();
-		$source = "define('ADELIE_DEBUG_BUILD', true); define('ADELIE_DEBUG_BUILD_TIME', $now);";
-		$this->source = $source.$this->source;
+		$constants  = "define('ADELIE_DEBUG_BUILD', true);\n";
+		$constants .= "define('ADELIE_DEBUG_BUILD_TIME', $now);\n";
+		$this->source .= $constants;
 	}
 
-	protected function _addDependingFiles()
+	protected function _addClassLoader()
 	{
-		$source = '';
-	
-		foreach ( $this->depends as $depend )
-		{
-			$source .= sprintf("require_once %s;", $depend);
-		}
-		
-		$this->source = $source.$this->source;
+		$classLoader = file_get_contents($this->dir.'/Resource/ClassLoader.php');
+		$classLoader = substr($classLoader, 5);
+		$this->source .= $classLoader;
 	}
 
 	protected function _addPreloadClass()
 	{
+		$preloadSource = file_get_contents($this->targetDir.'/Preload.php');
+		$preloadSource = substr($preloadSource, 5);
+		$this->source .= $preloadSource;
 		$preloadClass = $this->config('preloadClass');
 
 		if ( $preloadClass !== 'AdelieDebug_Preload' )
 		{
-			$this->source .= sprintf('class %s extends AdelieDebug_Preload {}', $preloadClass);
+			$this->source .= sprintf(file_get_contents($this->dir.'/Resource/Preload.php'), $preloadClass);
 		}
+	}
+
+	protected function _addArchive()
+	{
+		$files = AdelieDebugCompiler_Finder::find($this->targetDir);
+
+		$archiver = new AdelieDebugCompiler_Archiver($this);
+
+		foreach ( $files as $file )
+		{
+			$archiver->add($file);
+		}
+
+		$this->source .= $archiver->archive();
 	}
 
 	protected function _finalize()
 	{
-		$this->source = '<?php '.$this->source;
+
 	}
 
 	protected function _minimize()
@@ -155,7 +145,9 @@ class AdelieDebugCompiler_Application
 
 	protected function _outputFile()
 	{
-		$filename = $this->config('outputFile');
+		$preloadClass = $this->config('preloadClass');
+
+		$filename = 'build/'.$preloadClass.'.class.php';
 		$writtenBytes = file_put_contents($filename, $this->source);
 		
 		if ( $writtenBytes === false )

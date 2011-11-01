@@ -9,8 +9,6 @@
  *
  */
 
-define('ADELIE_DEBUG_FUNCTION_LOADED', true);
-
 function adump()
 {
 	$args = func_get_args();

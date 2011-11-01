@@ -55,7 +55,7 @@ class AdelieDebug_Application extends AdelieDebug_Core_Application
 			return;
 		}
 
-		$this->config = AdelieDebug_Build_Config::$configs['Config'];
+		$this->config = eval(AdelieDebug_Archive::$archive['/AdelieDebug/Config/Config.ini']);
 		$this->config['render.class'] = $this->config['render.class'].'OnBuild';
 	}
 
@@ -67,7 +67,7 @@ class AdelieDebug_Application extends AdelieDebug_Core_Application
 			return;
 		}
 
-		$routes = AdelieDebug_Build_Config::$configs['Route'];
+		$routes = eval(AdelieDebug_Archive::$archive['/AdelieDebug/Config/Route.ini']);
 		$this->router->setRoutes($routes);
 	}
 

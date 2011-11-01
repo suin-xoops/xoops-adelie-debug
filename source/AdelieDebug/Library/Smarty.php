@@ -9,6 +9,8 @@
  *
  */
 
+class_exists('Smarty') or require_once XOOPS_ROOT_PATH.'/class/smarty/Smarty.class.php';
+
 class AdelieDebug_Library_Smarty extends Smarty
 {
 	public function __construct()

@@ -47,15 +47,60 @@ class AdelieDebug_Debug_ErrorHandler
 			return true;
 		}
 
-		ob_start();
-		debug_print_backtrace();
-		$trace = ob_get_clean();
-		$trace = preg_replace("/.*\n#1/s", '#1', $trace);
-		$trace = preg_replace ('/^#(\d+)/me', '\'#\' . ($1 - 1)', $trace); 
+		$trace = $this->_backtrace(3);
 
 		$this->_add($level, $message, $file, $line, $trace);
 
 		return true;
+	}
+
+	protected function _backtrace($ignore = 1)
+	{
+		$output = '';
+		$backtrace = debug_backtrace();
+		$index = 0;
+
+		for ( $i = 0; $i < $ignore; $i ++ )
+		{
+			array_shift($backtrace);
+		}
+
+		foreach ( $backtrace as $index => $bt )
+		{
+			$args = '';
+
+			if ( isset($bt['class']) === true )
+			{
+				$function = $bt['class'].$bt['type'].$bt['function'];
+			}
+			else
+			{
+				$function = $bt['function'];
+			}
+	
+			if ( isset($bt['line']) === true )
+			{
+				$line = $bt['line'];
+			}
+			else
+			{
+				$line = '?';
+			}
+	
+			if ( isset($bt['file']) === true )
+			{
+				$file = $bt['file'];
+			}
+			else
+			{
+				$file = '?';
+			}
+
+			$output .= sprintf('#%u %s(%s) called at [%s:%s]'."\n", $index, $function, $args, $file, $line);
+			$index += 1;
+		}
+	
+		return $output;
 	}
 
 	protected function _setUpErrorTypes()

@@ -101,11 +101,13 @@ class AdelieDebug_Debug_Main
 
 	protected function _loadFunctions()
 	{
-		if ( defined('ADELIE_DEBUG_FUNCTION_LOADED') === true )
+		if ( defined('ADELIE_DEBUG_BUILD') === true )
 		{
-			return;
+			eval(AdelieDebug_Archive::$archive['/AdelieDebug/Debug/Function.php']);
 		}
-		
-		require_once dirname(__FILE__).'/Function.php';
+		else
+		{
+			require_once dirname(__FILE__).'/Function.php';
+		}
 	}
 }

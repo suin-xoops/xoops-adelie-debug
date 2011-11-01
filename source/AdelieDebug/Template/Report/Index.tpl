@@ -148,9 +148,13 @@
 				<td style="width: 10px;"><{$log.ms}></td>
 				<td><{$log.typeName}></td>
 				<td>
-					<pre class="info <{$log.typeName}>"><{$log.message}></pre>
-					<{if $log.info}>
-						<pre><{$log.info}></pre>
+					<{if $log.typeName == 'DUMP'}>
+						<{$log.message}>
+					<{else}>
+						<pre class="info <{$log.typeName}>"><{$log.message|escape}></pre>
+						<{if $log.info}>
+							<pre><{$log.info|escape}></pre>
+						<{/if}>
 					<{/if}>
 				</td>
 			</tr>

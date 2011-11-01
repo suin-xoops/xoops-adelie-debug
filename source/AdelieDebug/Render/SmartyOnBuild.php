@@ -13,17 +13,18 @@ class AdelieDebug_Render_SmartyOnBuild extends AdelieDebug_Render_Smarty
 {
 	protected function _getTempalte()
 	{
-		if ( array_key_exists($this->template, AdelieDebug_Build_Template::$sources) === false )
+		$template = '/AdelieDebug/'.$this->template.'.tpl';
+	
+		if ( array_key_exists($template, AdelieDebug_Archive::$archive) === false )
 		{
-			throw new RuntimeException("Template not found: ".$this->template);
+			throw new RuntimeException("Template not found: ".$template);
 		}
 
-		$template = strtr($this->template, '/', '_');
-		$filename = XOOPS_CACHE_PATH.'/AdelieDebug_'.$template.'.tpl';
+		$filename = XOOPS_CACHE_PATH.'/'.trim(strtr($template, '/', '_'), '_');
 
 		if ( file_exists($filename) === false or filemtime($filename) < ADELIE_DEBUG_BUILD_TIME )
 		{
-			file_put_contents($filename, AdelieDebug_Build_Template::$sources[$this->template]);
+			file_put_contents($filename, AdelieDebug_Archive::$archive[$template]);
 		}
 
 		return $filename;

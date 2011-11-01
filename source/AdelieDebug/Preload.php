@@ -36,13 +36,17 @@ class AdelieDebug_Preload extends XCube_ActionFilter
 	{
 		if ( defined('ADELIE_DEBUG_BUILD') === true )
 		{
-			return; // ビルドではこの処理は不要
+			$classLoader = new AdelieDebug_Archive_ClassLoader();
+			$classLoader->setIncludePath(':eval:');
+			$classLoader->register();
 		}
-
-		require_once dirname(__FILE__).'/AdelieDebug/Core/ClassLoader.php'; // ビルド時は実行されない
-		$classLoader = new AdelieDebug_Core_ClassLoader();
-		$classLoader->setIncludePath(dirname(__FILE__));
-		$classLoader->register();
+		else
+		{
+			require_once dirname(__FILE__).'/Core/ClassLoader.php';
+			$classLoader = new AdelieDebug_Core_ClassLoader();
+			$classLoader->setIncludePath(dirname(dirname(__FILE__)));
+			$classLoader->register();
+		}
 	}
 
 	protected function _setUp()
