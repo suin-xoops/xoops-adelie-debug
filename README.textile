@@ -37,3 +37,10 @@ h3. ソースコード
 h3. ビルド
 
 コマンドラインで php compile.php を叩くとビルドできます。
+
+h2. Tips
+
+h3. Smartyでadump()を使う
+
+<pre><{$variable|@adump}></pre>
+
