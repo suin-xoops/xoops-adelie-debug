@@ -50,7 +50,7 @@ class AdelieDebugCompiler_Application
 			$this->_addPreloadClass();
 			$this->_addArchive();
 			$this->_finalize();
-//			$this->_minimize();
+			$this->_minimize();
 			$this->_outputFile();
 		}
 		catch ( Exception $e )

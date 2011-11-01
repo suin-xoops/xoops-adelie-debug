@@ -15,7 +15,7 @@ class AdelieDebugCompiler_Archiver_Php extends AdelieDebugCompiler_Archiver_Plug
 	{
 		$this->_checkSyntax();
 		$contents = $this->_getContents();
-//		$contents = $this->_minimize($contents);
+		$contents = $this->_minimize($contents);
 		$contents = $this->_removePhpTag($contents);
 		return $contents;
 	}
