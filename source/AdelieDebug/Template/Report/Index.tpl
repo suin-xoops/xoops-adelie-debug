@@ -185,7 +185,7 @@
 					<{foreach from=$request key="key" item="value"}>
 						<tr>
 							<td><{$key}></td>
-							<td><{$value}></td>
+							<td><{$value|@var_dump}></td>
 						</tr>
 					<{/foreach}>
 				</table>
