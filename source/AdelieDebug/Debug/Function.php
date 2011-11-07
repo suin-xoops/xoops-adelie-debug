@@ -20,3 +20,10 @@ function atrace()
 {
 	AdelieDebug_Debug_Trace::trace(1);
 }
+
+function awhich($variable)
+{
+	$which  = new AdelieDebug_Debug_Which();
+	$result = $which->which($variable);
+	call_user_func(array('AdelieDebug_Debug_Dump', 'dumpbt'), 1, $result);
+}
