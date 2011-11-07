@@ -19,7 +19,7 @@ class AdelieDebug_Debug_Logger
 	const TYPE_SQL_MARK  = 32;
 	const TYPE_TRACE     = 64;
 
-	protected static $typeNames = array(
+	protected $typeNames = array(
 		self::TYPE_UNKOWN    => 'UNKNOWN',
 		self::TYPE_PHP_ERROR => 'PHP ERROR',
 		self::TYPE_DUMP      => 'DUMP',
@@ -49,7 +49,7 @@ class AdelieDebug_Debug_Logger
 	
 		$this->logs[] = array(
 			'type'     => $type,
-			'typeName' => self::$typeNames[$type],
+			'typeName' => $this->typeNames[$type],
 			'message'  => $message,
 			'time'     => $now,
 			'ms'       => round( $now * 1000 ),
@@ -70,7 +70,7 @@ class AdelieDebug_Debug_Logger
 
 	public function addSql($message, $info = '')
 	{
-		$this->add($message, self::TYPE_SQL, false, $info);
+		$this->add($message, 8, false, $info); // Database Sessionでエラーになるため定数を使わない。
 	}
 
 	public function addSqlError($message, $error)
