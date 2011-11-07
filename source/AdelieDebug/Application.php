@@ -47,6 +47,28 @@ class AdelieDebug_Application extends AdelieDebug_Core_Application
 		return defined('ADELIE_DEBUG_BUILD');
 	}
 
+	public function fileExists($filename)
+	{
+		if ( $this->isBuild() === true )
+		{
+			$filename = '/AdelieDebug'.$filename;
+			return array_key_exists($filename, AdelieDebug_Archive::$archive);
+		}
+		
+		return file_exists(ADELIE_DEBUG_DIR.$filename);
+	}
+
+	public function fileGetContents($filename)
+	{
+		if ( $this->isBuild() === true )
+		{
+			$filename = '/AdelieDebug'.$filename;
+			return AdelieDebug_Archive::$archive[$filename];
+		}
+		
+		return file_get_contents(ADELIE_DEBUG_DIR.$filename);
+	}
+
 	protected function _setUpConfig()
 	{
 		if ( $this->isBuild() === false )

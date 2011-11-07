@@ -14,8 +14,9 @@ class AdelieDebugCompiler_Application
 	protected $dir = '';
 
 	protected $config = array(
-		'phpCommand' => 'php',
-		'preloadClass' => 'AdelieDebug',
+		'phpCommand'    => 'php',
+		'preloadClass'  => 'AdelieDebug',
+		'yuicompressor' => 'java -jar ~/bin/yuicompressor-2.4.6.jar',
 	);
 
 	protected $temporaryFileManager = null;
