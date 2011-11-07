@@ -139,12 +139,14 @@
 	<div id="adelieDebugPhpErrors">
 		<table class="data">
 			<tr>
+				<th>No.</th>
 				<th>ms</th>
 				<th>Type</th>
 				<th>Message</th>
 			</tr>
 		<{foreach from=$logs item="log"}>
 			<tr>
+				<td style="width: 10px;"><{counter}></td>
 				<td style="width: 10px;"><{$log.ms}></td>
 				<td><{$log.typeName}></td>
 				<td>
