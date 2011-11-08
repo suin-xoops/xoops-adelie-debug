@@ -8,7 +8,7 @@
 			<span style="font-size: 12px;">(Source)</sapn>
 		<{/if}>
 	</p>
-	<p class="h2">タイムライン</p>
+	<p class="h2">Timeline</p>
 	<div id="adelieDebugPhpErrors">
 		<table class="data">
 			<tr>
@@ -37,7 +37,7 @@
 		</table>
 	</div>
 
-	<p class="h2">送信済ヘッダ</p>
+	<p class="h2">Sent Headers</p>
 	<div id="adelieDebugSentHeaders">
 		<{strip}>
 		<pre class="console">
@@ -47,7 +47,7 @@
 		</pre>
 		<{/strip}>
 	</div>
-	<p class="h2">リクエスト</p>
+	<p class="h2">Requests</p>
 	<div id="adelieDebugRequest">
 		<{foreach from=$requests key="name" item="request"}>
 			<p class="h3"><{$name}></p>
@@ -65,7 +65,7 @@
 					<{/foreach}>
 				</table>
 			<{else}>
-				<p>セットされている変数はありません。</p>
+				<p>There is no values.</p>
 			<{/if}>
 		<{/foreach}>
 	</div>
