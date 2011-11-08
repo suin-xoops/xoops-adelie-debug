@@ -32,7 +32,7 @@ class AdelieDebug_Controller_Report_Index extends AdelieDebug_Controller
 			'$_SERVER'  => $_SERVER,
 		);
 		$this->output['logs'] = $this->logger->getLogs();
-
+		$this->output['css'] = $this->app->fileGetContents('/File/css/report.css');
 		$this->_render();
 	}
 

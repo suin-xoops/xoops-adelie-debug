@@ -47,6 +47,22 @@ class AdelieDebug_Application extends AdelieDebug_Core_Application
 		return defined('ADELIE_DEBUG_BUILD');
 	}
 
+	/**
+	 * getBuildTime function.
+	 * 
+	 * @access public
+	 * @return integer timestamp
+	 */
+	public function getBuildTime()
+	{
+		if ( defined('ADELIE_DEBUG_BUILD_TIME') === true )
+		{
+			return ADELIE_DEBUG_BUILD_TIME;
+		}
+		
+		return false;
+	}
+
 	public function fileExists($filename)
 	{
 		if ( $this->isBuild() === true )

@@ -1,6 +1,13 @@
-<link rel="stylesheet" type="text/css" media="all" href="<{$xoopsUrl}>/index.php/debug/file/css/report.css" />
+<style><{$css}></style>
 <div class="adelieDebug">
-	<p class="h1">Adelie Debug</p>
+	<p class="h1">
+		<span>Adelie Debug</span>
+		<{if $isBuild}>
+			<span style="font-size: 12px;">(Build <{'YmdHis'|date:$buildTime}>)</sapn>
+		<{else}>
+			<span style="font-size: 12px;">(Source)</sapn>
+		<{/if}>
+	</p>
 	<p class="h2">タイムライン</p>
 	<div id="adelieDebugPhpErrors">
 		<table class="data">
