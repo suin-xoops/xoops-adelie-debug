@@ -11,5 +11,10 @@
 
 abstract class AdelieDebug_Controller extends AdelieDebug_Core_Controller
 {
-
+	protected function _getTemplateValues()
+	{
+		return array_merge(parent::_getTemplateValues(), array(
+			'xoopsUrl' => XOOPS_URL,
+		));
+	}
 }

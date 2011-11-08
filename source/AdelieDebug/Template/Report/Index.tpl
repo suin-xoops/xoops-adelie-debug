@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" media="all" href="<{$siteBaseUrl}>/index.php/debug/file/css/report.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoopsUrl}>/index.php/debug/file/css/report.css" />
 <div class="adelieDebug">
 	<p class="h1">Adelie Debug</p>
 	<p class="h2">タイムライン</p>
