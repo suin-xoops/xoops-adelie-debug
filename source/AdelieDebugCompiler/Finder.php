@@ -37,6 +37,12 @@ class AdelieDebugCompiler_Finder
 				continue;
 			}
 
+			if ( strpos($file->getBasename(), '.') === 0 )
+			{
+				// ドットファイル
+				continue;
+			}
+
 			$_files[] = $filename;
 		}
 		
