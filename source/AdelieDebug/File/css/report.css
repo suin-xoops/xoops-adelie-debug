@@ -1,6 +1,8 @@
 .adelieDebug {
 	background: #fff;
 	text-align: left;
+	font-size: 12px;
+	font-family: "lucida grande",tahoma,verdana,arial,'Hiragino Kaku Gothic Pro',Meiryo,'MS PGothic',sans-serif;
 	}
 
 .adelieDebug p.h1 {
@@ -131,3 +133,34 @@
 .adelieDebug span.expandMore {
 	float: left;
 	}
+
+
+/* エラーダイアログ */
+.adelieDebug .msgInfo, 
+.adelieDebug .msgSuccess,
+.adelieDebug .msgWarning, 
+.adelieDebug .msgError {
+	border: 1px solid;
+	margin: 10px 5px;
+	padding: 10px 20px;
+	}
+
+	.adelieDebug .msgInfo {
+		color: #00529B;
+		background-color: #BDE5F8;
+		}
+
+	.adelieDebug .msgSuccess {
+		color: #4F8A10;
+		background-color: #DFF2BF;
+		}
+
+	.adelieDebug .msgWarning {
+		color: #9F6000;
+		background-color: #FEEFB3;
+		}
+
+	.adelieDebug .msgError {
+		color: #D8000C;
+		background-color: #FFBABA;
+		}

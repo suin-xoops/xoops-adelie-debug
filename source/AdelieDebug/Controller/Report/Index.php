@@ -32,6 +32,7 @@ class AdelieDebug_Controller_Report_Index extends AdelieDebug_Controller
 			'$_SERVER'  => $_SERVER,
 		);
 		$this->output['logs'] = $this->logger->getLogs();
+		$this->output['errorSummary'] = $this->logger->getErrorSummary();
 		$this->output['css'] = $this->app->fileGetContents('/File/css/report.css');
 		$this->_render();
 	}
@@ -45,7 +46,7 @@ class AdelieDebug_Controller_Report_Index extends AdelieDebug_Controller
 	{
 		if ( $this->app->parameter('via') === null )
 		{
-//			throw new RuntimeException("予期せぬアクセス方法です。");
+			throw new RuntimeException("予期せぬアクセス方法です。");
 		}
 	}
 }

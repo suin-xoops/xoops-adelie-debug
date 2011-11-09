@@ -8,18 +8,31 @@
 			<span style="font-size: 12px;">(Source)</sapn>
 		<{/if}>
 	</p>
+	<p class="h2">Errors</p>
+	<{foreach from=$errorSummary key="typeName" item="ids"}>
+		<div class="msgError">
+			<strong><{$typeName}> (<{$ids|@count}>)</strong>
+			<span>...</span>
+			<{foreach from=$ids item="id"}>
+				<a href="#adelieDebugLogId<{$id}>" style="margin: 10px;">#<{$id}></a>
+			<{/foreach}>
+		</div>
+	<{foreachelse}>
+		<div class="msgSuccess">There is no error.</div>
+	<{/foreach}>
+
 	<p class="h2">Timeline</p>
 	<div id="adelieDebugPhpErrors">
 		<table class="data">
 			<tr>
-				<th>No.</th>
+				<th>ID</th>
 				<th>ms</th>
 				<th>Type</th>
 				<th>Message</th>
 			</tr>
 		<{foreach from=$logs item="log"}>
 			<tr>
-				<td style="width: 10px;"><{counter}></td>
+				<td style="width: 10px;" id="adelieDebugLogId<{$log.id}>"><{$log.id}></td>
 				<td style="width: 10px;"><{$log.ms}></td>
 				<td><{$log.typeName}></td>
 				<td>

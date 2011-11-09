@@ -29,6 +29,8 @@ class AdelieDebug_Debug_Logger
 		self::TYPE_TRACE     => 'TRACE',
 	);
 
+	protected $id = 0;
+
 	protected $logs = array();
 
 	protected $initTime = 0;
@@ -43,11 +45,34 @@ class AdelieDebug_Debug_Logger
 		return $this->logs;
 	}
 
+	/**
+	 * エラーの概要を返す.
+	 * @return array
+	 */
+	public function getErrorSummary()
+	{
+		$errors = array();
+
+		foreach ( $this->logs as $log )
+		{
+			if ( $log['isError'] === false )
+			{
+				continue;
+			}
+
+			$typeName = $log['typeName'];
+			$errors[$typeName][] = $log['id'];
+		}
+		
+		return $errors;
+	}
+
 	public function add($message, $type = self::TYPE_UNKOWN, $isError = false, $info = '')
 	{
 		$now = microtime(true) - $this->initTime;
 	
 		$this->logs[] = array(
+			'id'       => $this->_incrementId(),
 			'type'     => $type,
 			'typeName' => $this->typeNames[$type],
 			'message'  => $message,
@@ -86,5 +111,11 @@ class AdelieDebug_Debug_Logger
 	public function addTrace($message)
 	{
 		$this->add($message, self::TYPE_TRACE);
+	}
+
+	protected function _incrementId()
+	{
+		$this->id += 1;
+		return $this->id;
 	}
 }
