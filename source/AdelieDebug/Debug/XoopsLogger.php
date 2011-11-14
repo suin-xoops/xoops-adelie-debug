@@ -67,6 +67,11 @@ class AdelieDebug_Debug_XoopsLogger extends XoopsLogger
 		}
 	}
 
+	public function clearQuery()
+	{
+		$this->logger->addMessage('clearQuery() was commanded. But this request was rejected by AdelieDebug.');
+	}
+
 	protected function _importQueryLogs()
 	{
 		foreach ( $this->queries as $query )

@@ -18,6 +18,7 @@ class AdelieDebug_Debug_Logger
 	const TYPE_SQL_ERROR = 16;
 	const TYPE_SQL_MARK  = 32;
 	const TYPE_TRACE     = 64;
+	const TYPE_MESSAGE   = 128;
 
 	protected $typeNames = array(
 		self::TYPE_UNKOWN    => 'UNKNOWN',
@@ -27,6 +28,7 @@ class AdelieDebug_Debug_Logger
 		self::TYPE_SQL_ERROR => 'SQL ERROR',
 		self::TYPE_SQL_MARK  => 'SQL MARK',
 		self::TYPE_TRACE     => 'TRACE',
+		self::TYPE_MESSAGE   => 'MESSAGE',
 	);
 
 	protected $id = 0;
@@ -111,6 +113,11 @@ class AdelieDebug_Debug_Logger
 	public function addTrace($message)
 	{
 		$this->add($message, self::TYPE_TRACE);
+	}
+
+	public function addMessage($message)
+	{
+		$this->add($message, self::TYPE_MESSAGE);
 	}
 
 	protected function _incrementId()
