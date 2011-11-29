@@ -40,14 +40,15 @@ class AdelieDebug_Debug_Main
 
 	public function enableErrorReporting()
 	{
-		if ( version_compare(PHP_VERSION, '5.3', '>=') === true )
+/*		if ( version_compare(PHP_VERSION, '5.3', '>=') === true )
 		{
 			error_reporting(E_ALL ^ E_DEPRECATED); // TODO >> 設定可能に
 		}
 		else
 		{
+*/
 			error_reporting(E_ALL); // TODO >> 設定可能に
-		}
+//		}
 
 		ini_set('log_errors', true);
 		ini_set('display_errors', true);
