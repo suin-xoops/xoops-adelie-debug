@@ -31,6 +31,8 @@ h2. 基本的な使い方
 
 h2. コンパイル
 
+以下の情報は、AdelieDebug自体をカスタマイズしたい人にのみ関係します。
+
 h3. ソースコード
 
 ビルド前のソースコードは source にあります。
@@ -43,6 +45,7 @@ ln -s ~/Projects/xoops-adelie-debug/source/AdelieDebug/Preload.php /var/www/html
 h3. ビルド
 
 コマンドラインで php compile.php を叩くとビルドできます。
+ビルドには yuicompressor が必要です。~/bin/yuicompressor-2.4.6.jar に置いてください。
 
 h2. Tips
 

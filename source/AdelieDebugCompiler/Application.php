@@ -52,6 +52,7 @@ class AdelieDebugCompiler_Application
 			$this->_addArchive();
 			$this->_finalize();
 			$this->_minimize();
+			$this->_addDocComent();
 			$this->_outputFile();
 		}
 		catch ( Exception $e )
@@ -88,7 +89,7 @@ class AdelieDebugCompiler_Application
 
 	protected function _initializeSource()
 	{
-		$this->source = "<?php \n";
+		$this->source = "<?php ";
 	}
 
 	protected function _addConstants()
@@ -155,5 +156,24 @@ class AdelieDebugCompiler_Application
 		{
 			throw new RuntimeException("Failed to write file: $filename");
 		}
+	}
+
+	protected function _addDocComent()
+	{
+		$docComment = $this->_getDocComment();
+		$this->source = "<?php\n".$docComment.substr($this->source, 6);
+	}
+
+	protected function _getDocComment()
+	{
+		$docComment  = "/**\n";
+		$docComment .= " * AdelieDebug - Powerful Debugger for XOOPS Cube Legacy & TOKYOPen\n";
+		$docComment .= " * Copyright 2011-".date('Y')." Suin\n";
+		$docComment .= " *\n";
+		$docComment .= " * AdelieDebug is distributed under the terms of the GPL2 license\n";
+		$docComment .= " * For more information visit https://github.com/suin/xoops-adelie-debug\n";
+		$docComment .= " * Do not remove this copyright message\n";
+		$docComment .= " */\n";
+		return $docComment;
 	}
 }
