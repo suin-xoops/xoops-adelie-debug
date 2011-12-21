@@ -11,6 +11,8 @@
 
 class AdelieDebug_Archive_ClassLoader
 {
+	const DIRECTORY_SEPARATOR = '/';
+
 	protected $includePaths       = array();
 	protected $namespaceSeparator = '_';
 	protected $fileExtension      = '.php';
@@ -86,7 +88,7 @@ class AdelieDebug_Archive_ClassLoader
 			throw new InvalidArgumentException('Invalid class name was given: '.$className);
 		}
 
-		$classFile = str_replace($this->namespaceSeparator, DIRECTORY_SEPARATOR, $className);
+		$classFile = str_replace($this->namespaceSeparator, self::DIRECTORY_SEPARATOR, $className);
 		$classFile = $classFile.$this->fileExtension;
 
 		foreach ( $this->includePaths as $includePath )
@@ -103,7 +105,7 @@ class AdelieDebug_Archive_ClassLoader
 			}
 			else
 			{
-				$classPath = $includePath.DIRECTORY_SEPARATOR.$classFile;
+				$classPath = $includePath.self::DIRECTORY_SEPARATOR.$classFile;
 
 				if ( file_exists($classPath) === true )
 				{
