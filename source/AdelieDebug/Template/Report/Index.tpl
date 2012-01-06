@@ -20,6 +20,17 @@
 	<{foreachelse}>
 		<div class="msgSuccess">There is no error.</div>
 	<{/foreach}>
+	
+	<p class="h3">Cheat Sheet</p>
+	<div class="adelieDebugHelp">
+		<span>adump([mixed[, mixed]])</span>
+		<span>atrace()</span>
+		<span>awhich(object|string)</span>
+		<span>asynop(object|string)</span>
+		<{*<span class="adelieDebugHelpMore"><a href="<{$xoops_url}>/index.php/debug/help/">more…</a></span>*}>
+	</div>
+	
+	<div class="adelieDebugClearBoth"></div>
 
 	<p class="h2">Timeline</p>
 	<div id="adelieDebugPhpErrors">

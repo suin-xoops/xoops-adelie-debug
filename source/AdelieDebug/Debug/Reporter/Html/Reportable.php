@@ -31,7 +31,12 @@ class AdelieDebug_Debug_Reporter_Html_Reportable
 		{
 			return false;
 		}
-		
+
+		if ( defined('ADELIE_DEBUG_DISABLE') === true )
+		{
+			return false;
+		}
+
 		return true;
 	}
 

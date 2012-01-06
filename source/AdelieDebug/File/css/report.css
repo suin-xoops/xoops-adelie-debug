@@ -164,3 +164,37 @@
 		color: #D8000C;
 		background-color: #FFBABA;
 		}
+
+.adelieDebugHelp {
+}
+	.adelieDebugHelp span {
+		float: left;
+		background: #ECECEC;
+		margin: 5px;
+		white-space: nowrap;
+		font-family: Consolas,monospace;
+		border-radius: 8px;
+		padding: 0 5px;
+	}
+
+	span.adelieDebugHelpMore {
+		background-color: #BDE5F8;
+	}
+
+	span.adelieDebugHelpMore:hover {
+		background-color: #84d3f8;
+	}
+
+		span.adelieDebugHelpMore a {
+			display: block;
+			color: #00529B;
+			text-decoration: none;
+		}
+
+		span.adelieDebugHelpMore a:hover {
+			text-decoration: none;
+		}
+
+.adelieDebugClearBoth {
+	clear: both;
+}
