@@ -13,7 +13,8 @@ h3. 2.便利なデバッグ関数
 
 * adump(mixed[, mixed, ...]): var_dump()を preタグ で囲んで見やすくした上に、関数が何処に書かれているかまで表示。
 * atrace(): 処理経路をトレースします。関数がどこから呼ばれてるから一目瞭然。
-* awhich(object|string): クラスや関数がどのファイルの何行目で定義されているかを表示。
+* awhich(object または class_name_string): クラスや関数がどのファイルの何行目で定義されているかを表示。
+* asynop(object または class_name_string): クラスの実装の概要を表示します。
 
 h3. 3.XOOPS Cube Legacyのためのツールであること
 

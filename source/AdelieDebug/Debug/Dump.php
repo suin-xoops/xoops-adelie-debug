@@ -20,7 +20,7 @@ class AdelieDebug_Debug_Dump
 
 	public static function dump()
 	{
-		$called = self::_getCalled(0, false);
+		$called = AdelieDebug_Debug_Trace::getCalled(0);
 		$values = func_get_args();
 		$result = self::_dump_html($called, $values);
 		self::$logger->addDump($result);
@@ -29,38 +29,18 @@ class AdelieDebug_Debug_Dump
 	public static function dumpbt($level = 0)
 	{
 		$level  = $level + 1;
-		$called = self::_getCalled($level, false);
+		$called = AdelieDebug_Debug_Trace::getCalled($level);
 		$values = func_get_args();
 		array_shift($values);
 		$result =  self::_dump_html($called, $values);
 		self::$logger->addDump($result);
 	}
 
-	protected static function _getCalled($level = 0, $isDump = true)
-	{
-		$level = $level + 1;
-		$trace = array(
-			'file' => 'Unknown file',
-			'line' => 0,
-		);
-		
-		$traces = debug_backtrace();
-
-		if ( isset($traces[$level]) === true )
-		{
-			$trace = array_merge($trace, $traces[$level]);
-		}
-		
-		$called = sprintf("Called in %s on line %s", $trace['file'], $trace['line']);
-
-		return $called;
-	}
-
 	protected static function _dump_html($called, $values)
 	{
 		ob_start();
 		echo '<pre style="border:1px dotted #000; font-size:12px; color:#000; background:#fff; font-family:"Times New Roman",Georgia,Serif;">';
-		echo '<div style="font-size:10px; background:#ddd;text-align:left;">'.$called."</div>";
+		echo $called;
 		echo '<div style="text-align:left;">';
 		array_map('var_dump', $values);
 		echo '</div>';

@@ -32,4 +32,29 @@ class AdelieDebug_Debug_Trace
 		
 		self::$logger->addTrace($trace);
 	}
+
+	public static function getCalled($level = 0, $html = true)
+	{
+		$level = $level + 1;
+		$trace = array(
+			'file' => 'Unknown file',
+			'line' => 0,
+		);
+		
+		$traces = debug_backtrace();
+
+		if ( isset($traces[$level]) === true )
+		{
+			$trace = array_merge($trace, $traces[$level]);
+		}
+		
+		$called = sprintf("Called in %s on line %s", $trace['file'], $trace['line']);
+
+		if ( $html === true )
+		{
+			$called = '<div style="font-size:10px; background:#ddd;text-align:left;">'.$called."</div>";
+		}
+
+		return $called;
+	}
 }

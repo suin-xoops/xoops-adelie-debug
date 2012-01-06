@@ -19,6 +19,7 @@ class AdelieDebug_Debug_Logger
 	const TYPE_SQL_MARK  = 32;
 	const TYPE_TRACE     = 64;
 	const TYPE_MESSAGE   = 128;
+	const TYPE_SYNOPSYS  = 256;
 
 	protected $typeNames = array(
 		self::TYPE_UNKOWN    => 'UNKNOWN',
@@ -29,6 +30,7 @@ class AdelieDebug_Debug_Logger
 		self::TYPE_SQL_MARK  => 'SQL MARK',
 		self::TYPE_TRACE     => 'TRACE',
 		self::TYPE_MESSAGE   => 'MESSAGE',
+		self::TYPE_SYNOPSYS  => 'SYNOPSYS',
 	);
 
 	protected $id = 0;
@@ -118,6 +120,11 @@ class AdelieDebug_Debug_Logger
 	public function addMessage($message)
 	{
 		$this->add($message, self::TYPE_MESSAGE);
+	}
+
+	public function addSynopsys($synopsys)
+	{
+		$this->add($synopsys, self::TYPE_SYNOPSYS);
 	}
 
 	protected function _incrementId()

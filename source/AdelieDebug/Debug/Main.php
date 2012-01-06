@@ -97,6 +97,7 @@ class AdelieDebug_Debug_Main
 	{
 		AdelieDebug_Debug_Dump::setLogger($this->logger);
 		AdelieDebug_Debug_Trace::setLogger($this->logger);
+		AdelieDebug_Debug_Synopsys::setLogger($this->logger);
 		$this->_loadFunctions();
 	}
 

@@ -38,6 +38,8 @@
 				<td>
 					<{if $log.typeName == 'DUMP'}>
 						<{$log.message}>
+					<{elseif $log.typeName == 'SYNOPSYS'}>
+						<{$log.message}>
 					<{else}>
 						<pre class="info <{$log.typeName}>"><{$log.message|escape}></pre>
 						<{if $log.info}>

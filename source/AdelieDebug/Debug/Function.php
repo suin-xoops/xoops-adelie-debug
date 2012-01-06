@@ -27,3 +27,8 @@ function awhich($variable)
 	$result = $which->which($variable);
 	call_user_func(array('AdelieDebug_Debug_Dump', 'dumpbt'), 1, $result);
 }
+
+function asynop($object, $highlight = true)
+{
+	AdelieDebug_Debug_Synopsys::synopsys($object, $highlight, 2);
+}
