@@ -9,7 +9,19 @@
  *
  */
 
-class_exists('Smarty') or require_once XOOPS_ROOT_PATH.'/class/smarty/Smarty.class.php';
+if ( class_exists('Smarty') === false )
+{
+	if ( file_exists(XOOPS_ROOT_PATH.'/class/smarty/Smarty.class.php') === true )
+	{
+		// XOOPS Cube Legacy
+		require_once XOOPS_ROOT_PATH.'/class/smarty/Smarty.class.php';
+	}
+	else
+	{
+		// TOKYOPen
+		require_once XOOPS_TRUST_PATH.'/vendor/smarty/Smarty.class.php';
+	}
+}
 
 class AdelieDebug_Library_Smarty extends Smarty
 {
