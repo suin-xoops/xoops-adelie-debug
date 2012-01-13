@@ -21,7 +21,12 @@ class AdelieDebug_Controller_Report_Index extends AdelieDebug_Controller
 	public function run()
 	{
 		$this->_checkAccess();
-		
+
+		if ( isset($_SESSION) === false )
+		{
+			$_SESSION = array();
+		}
+
 		$this->output['sentHeaders'] = headers_list();
 		$this->output['requests'] = array(
 			'$_GET'     => $_GET, 
