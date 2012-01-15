@@ -62,6 +62,7 @@ class AdelieDebug_Debug_Main
 		$this->_setUpReporter(); // シャットダウン時にReporterをnewすると既にメモリが足りなくなっている可能性があるため予めメモリを確保しておく
 		$this->_setUpShutdown();
 		$this->_setUpFunctions();
+//		$this->_setUpDelegateManagerProxy();
 	}
 
 	protected function _setUpLogger()
@@ -99,6 +100,12 @@ class AdelieDebug_Debug_Main
 		AdelieDebug_Debug_Trace::setLogger($this->logger);
 		AdelieDebug_Debug_Synopsys::setLogger($this->logger);
 		$this->_loadFunctions();
+	}
+
+	protected function _setUpDelegateManagerProxy()
+	{
+		$root = XCube_Root::getSingleton();
+		$root->mDelegateManager = new AdelieDebug_Debug_DelegateManagerProxy($root->mDelegateManager, $this->logger);
 	}
 
 	protected function _loadFunctions()

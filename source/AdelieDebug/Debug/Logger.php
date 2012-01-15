@@ -20,6 +20,7 @@ class AdelieDebug_Debug_Logger
 	const TYPE_TRACE     = 64;
 	const TYPE_MESSAGE   = 128;
 	const TYPE_SYNOPSYS  = 256;
+	const TYPE_TRIGGER_DELEGATE = 512;
 
 	protected $typeNames = array(
 		self::TYPE_UNKOWN    => 'UNKNOWN',
@@ -31,6 +32,7 @@ class AdelieDebug_Debug_Logger
 		self::TYPE_TRACE     => 'TRACE',
 		self::TYPE_MESSAGE   => 'MESSAGE',
 		self::TYPE_SYNOPSYS  => 'SYNOPSYS',
+		self::TYPE_TRIGGER_DELEGATE => 'DELEGATE',
 	);
 
 	protected $id = 0;
@@ -125,6 +127,12 @@ class AdelieDebug_Debug_Logger
 	public function addSynopsys($synopsys)
 	{
 		$this->add($synopsys, self::TYPE_SYNOPSYS);
+	}
+
+	public function addTriggerDelegate($delegateName)
+	{
+		$message = sprintf("triggered %s", $delegateName);
+		$this->add($message, self::TYPE_TRIGGER_DELEGATE);
 	}
 
 	protected function _incrementId()

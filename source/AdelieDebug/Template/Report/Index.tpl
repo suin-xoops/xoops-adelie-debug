@@ -51,6 +51,8 @@
 						<{$log.message}>
 					<{elseif $log.typeName == 'SYNOPSYS'}>
 						<{$log.message}>
+					<{elseif $log.typeName == 'DELEGATE'}>
+						<div style="font-size:12px;"><{$log.message|escape}></div>
 					<{else}>
 						<pre class="info <{$log.typeName}>"><{$log.message|escape}></pre>
 						<{if $log.info}>

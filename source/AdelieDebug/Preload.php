@@ -66,4 +66,3 @@ class AdelieDebug_Preload extends XCube_ActionFilter
 		return ( strpos($_SERVER['REQUEST_URI'], 'index.php/debug') !== false );
 	}
 }
-
