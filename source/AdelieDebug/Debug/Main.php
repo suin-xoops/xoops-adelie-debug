@@ -90,7 +90,11 @@ class AdelieDebug_Debug_Main
 
 	protected function _setUpShutdown()
 	{
-		$this->shutdown = new AdelieDebug_Debug_Shutdown($this->reporter);
+//		$consoleReporter = new AdelieDebug_Debug_Reporter_Console($this->logger);
+
+		$this->shutdown = new AdelieDebug_Debug_Shutdown();
+		$this->shutdown->add($this->reporter);
+//		$this->shutdown->add($consoleReporter);
 		$this->shutdown->register();
 	}
 

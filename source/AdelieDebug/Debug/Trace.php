@@ -18,7 +18,7 @@ class AdelieDebug_Debug_Trace
 		self::$logger = $logger;
 	}
 
-	public function trace($minus = 0)
+	public static function trace($minus = 0, $return = false)
 	{
 		// debug_print_backtrace()がメモリオーバーになる可能性があるので、例外のトレース機能を使う
 		$exception = new Exception();
@@ -30,7 +30,14 @@ class AdelieDebug_Debug_Trace
 			$trace = preg_replace ('/^#(\d+)/me', '\'#\' . ($1 - 1)', $trace);
 		}
 
-		self::$logger->addTrace($trace);
+		if ( $return === true )
+		{
+			return $trace;
+		}
+		else
+		{
+			self::$logger->addTrace($trace);
+		}
 	}
 
 	public static function getCalled($level = 0, $html = true)

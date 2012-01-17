@@ -59,7 +59,8 @@ class AdelieDebug_Debug_XoopsLogger extends XoopsLogger
 
 		if ( $error )
 		{
-			$this->logger->addSqlError($sql, $error);
+			$trace = AdelieDebug_Debug_Trace::trace(2, true);
+			$this->logger->addSqlError($sql, $error, $trace);
 		}
 		else
 		{

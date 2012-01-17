@@ -104,9 +104,9 @@ class AdelieDebug_Debug_Logger
 		$this->add($message, 8, false, $info); // Database Sessionでエラーになるため定数を使わない。
 	}
 
-	public function addSqlError($message, $error)
+	public function addSqlError($message, $error, $trace)
 	{
-		$this->add($message, self::TYPE_SQL_ERROR, true, $error);
+		$this->add($message, self::TYPE_SQL_ERROR, true, $error."\n".$trace);
 	}
 
 	public function addSqlMark($message)
