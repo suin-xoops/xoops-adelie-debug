@@ -54,6 +54,23 @@ class AdelieDebug_Debug_ErrorHandler
 		return true;
 	}
 
+	public function catchFatal()
+	{
+		$error = error_get_last();
+
+		if( $error === null )
+		{
+			return;
+		}
+
+		if ( $error['type'] !== E_ERROR )
+		{
+			return;
+		}
+
+		$this->_add($error['type'], $error['message'], $error['file'], $error['line'], "Unable to backtrace fatal error...");
+	}
+
 	protected function _backtrace($ignore = 1)
 	{
 		$output = '';

@@ -13,9 +13,9 @@ class AdelieDebug_Debug_Shutdown
 {
 	protected $callbacks = array();
 
-	public function add(AdelieDebug_Debug_Reporter $reporter)
+	public function add($callback)
 	{
-		$this->callbacks[] = $reporter;
+		$this->callbacks[] = $callback;
 	}
 
 	public function register()
@@ -24,10 +24,10 @@ class AdelieDebug_Debug_Shutdown
 	}
 
 	public function report()
-	{
+	{	
 		foreach ( $this->callbacks as $callback )
 		{
-			$callback->report();
+			call_user_func($callback);
 		}
 	}
 }

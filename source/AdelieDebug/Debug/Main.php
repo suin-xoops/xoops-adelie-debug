@@ -92,8 +92,9 @@ class AdelieDebug_Debug_Main
 	{
 //		$consoleReporter = new AdelieDebug_Debug_Reporter_Console($this->logger);
 
-		$this->shutdown = new AdelieDebug_Debug_Shutdown();
-		$this->shutdown->add($this->reporter);
+		$this->shutdown = new AdelieDebug_Debug_Shutdown($this->logger);
+		$this->shutdown->add(array($this->errorHandler, 'catchFatal'));
+		$this->shutdown->add(array($this->reporter, 'report'));
 //		$this->shutdown->add($consoleReporter);
 		$this->shutdown->register();
 	}
