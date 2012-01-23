@@ -41,6 +41,7 @@
 				<th>Type</th>
 				<th>Message</th>
 			</tr>
+		<{assign var="lastTimeRate" value=0}>
 		<{foreach from=$logs item="log"}>
 			<tr>
 				<td style="width: 10px;" id="adelieDebugLogId<{$log.id}>"><{$log.id}></td>
@@ -53,6 +54,18 @@
 						<{$log.message}>
 					<{elseif $log.typeName == 'DELEGATE'}>
 						<div style="font-size:12px;"><{$log.message|escape}></div>
+					<{elseif $log.typeName == 'SQL'}>
+						<{math equation="this - last" this=$log.timeRate last=$lastTimeRate assign="increce"}>
+						<{strip}>
+						<pre class="info <{$log.typeName}>" style="position:relative;">
+							<div style="position: relative; z-index: 1;"><{$log.message|escape}></div>
+							<div style="height: 100%; width: <{$log.timeRate}>px; background: #c5d9a3; position: absolute; top: 0; left: 0;"></div><{* TODO >> move to css *}>
+						</pre>
+						<{/strip}>
+						<{if $log.info}>
+							<pre><{$log.info|escape}></pre>
+						<{/if}>
+						<{assign var="lastTimeRate" value=$log.timeRate}>
 					<{else}>
 						<pre class="info <{$log.typeName}>"><{$log.message|escape}></pre>
 						<{if $log.info}>

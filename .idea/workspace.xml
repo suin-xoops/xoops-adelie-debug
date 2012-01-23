@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6f48f8e-e223-436a-9469-3381f14f982f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="a6f48f8e-e223-436a-9469-3381f14f982f" name="Default" comment="" />
     <ignored path="xoops-adelie-debug.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,44 +21,7 @@
     <favorites_list name="xoops-adelie-debug" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="PHPInfo.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Debug/PHPInfo.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Index.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Controller/Report/Index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="30" selection-start="1021" selection-end="1028" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Index.tpl" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Template/Report/Index.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="33" selection-start="2320" selection-end="2320" vertical-scroll-proportion="0.4185022">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TextFormat.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/AdelieDebug/TextFormat.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="28" selection-start="13" selection-end="35" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
@@ -158,7 +119,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="802" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -231,30 +192,30 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/source/AdelieDebug/TextFormat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="28" selection-start="13" selection-end="35" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Debug/PHPInfo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.0">
+        <state line="37" column="0" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.6586742">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Controller/Report/Index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="30" selection-start="1021" selection-end="1028" vertical-scroll-proportion="0.0">
+        <state line="43" column="30" selection-start="1021" selection-end="1028" vertical-scroll-proportion="0.8448519">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Template/Report/Index.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="33" selection-start="2320" selection-end="2320" vertical-scroll-proportion="0.4185022">
+        <state line="85" column="38" selection-start="2320" selection-end="2325" vertical-scroll-proportion="0.4185022">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/AdelieDebug/TextFormat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="28" selection-start="13" selection-end="35" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

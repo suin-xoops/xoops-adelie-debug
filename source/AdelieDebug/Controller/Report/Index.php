@@ -36,7 +36,7 @@ class AdelieDebug_Controller_Report_Index extends AdelieDebug_Controller
 			'$_FILES'   => $_FILES,
 			'$_SERVER'  => $_SERVER,
 		);
-		$this->output['logs'] = $this->logger->getLogs();
+		$this->output['logs'] = $this->_getLogs();
 		$this->output['errorSummary'] = $this->logger->getErrorSummary();
 		$this->output['css'] = $this->app->fileGetContents('/File/css/report.css');
 
@@ -62,5 +62,23 @@ class AdelieDebug_Controller_Report_Index extends AdelieDebug_Controller
 	protected function _renderTheme($content)
 	{
 		return $content['content'];
+	}
+
+	protected function _getLogs()
+	{
+		$logs = $this->logger->getLogs();
+
+		$last = end($logs);
+		$lastTime = $last['time'];
+
+		foreach ( $logs as $key => $log )
+		{
+			$timePer  = ( $log['time'] / $lastTime ) * 100;
+			$timeRate = ( $log['time'] * 800 ) /  $lastTime;
+			$logs[$key]['timePer']  = $timePer;
+			$logs[$key]['timeRate'] = $timeRate;
+		}
+
+		return $logs;
 	}
 }
