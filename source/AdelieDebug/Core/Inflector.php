@@ -47,4 +47,13 @@ class AdelieDebug_Core_Inflector
 		$string = strtolower($string);
 		return $string;
 	}
+
+	public static function humanize($string)
+	{
+		$string = strtr($string, '_', ' ');
+		$string = strtr($string, '.', ' ');
+		$string = preg_replace('/([A-Z])/', ' $1', $string);
+		$string = ucwords($string);
+		return $string;
+	}
 }

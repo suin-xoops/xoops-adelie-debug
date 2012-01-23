@@ -82,8 +82,8 @@
 			<{if $request}>
 				<table class="data">
 					<tr>
-						<th>キー</th>
-						<th>値</th>
+						<th>Key</th>
+						<th>Value</th>
 					</tr>
 					<{foreach from=$request key="key" item="value"}>
 						<tr>
@@ -97,4 +97,24 @@
 			<{/if}>
 		<{/foreach}>
 	</div>
+	<p class="h2">PHP Information</p>
+	<{foreach from=$phpInfo key="categoryName" item="info"}>
+		<p class="h3"><{$categoryName|ucwords}></p>
+		<{if $info}>
+			<table class="data">
+				<tr>
+					<th>Key</th>
+					<th>Value</th>
+				</tr>
+				<{foreach from=$info key="key" item="value"}>
+				<tr>
+					<td><{$key}></td>
+					<td><{$value}></td>
+				</tr>
+				<{/foreach}>
+			</table>
+		<{else}>
+			<p>There is no values.</p>
+		<{/if}>
+	<{/foreach}>
 </div>

@@ -39,6 +39,10 @@ class AdelieDebug_Controller_Report_Index extends AdelieDebug_Controller
 		$this->output['logs'] = $this->logger->getLogs();
 		$this->output['errorSummary'] = $this->logger->getErrorSummary();
 		$this->output['css'] = $this->app->fileGetContents('/File/css/report.css');
+
+		$phpinfo = new AdelieDebug_Debug_PHPInfo();
+		$this->output['phpInfo'] = $phpinfo->summary();
+		
 		$this->_render();
 	}
 
