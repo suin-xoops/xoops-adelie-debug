@@ -73,8 +73,17 @@ class AdelieDebug_Controller_Report_Index extends AdelieDebug_Controller
 
 		foreach ( $logs as $key => $log )
 		{
-			$timePer  = ( $log['time'] / $lastTime ) * 100;
-			$timeRate = ( $log['time'] * 800 ) /  $lastTime;
+			if ( isset($logs[$key + 1]['time']) === true )
+			{
+				$time = $logs[$key + 1]['time'];
+			}
+			else
+			{
+				$time = $log['time'];
+			}
+		
+			$timePer  = ( $time / $lastTime ) * 100;
+			$timeRate = ( $time * 800 ) /  $lastTime;
 			$logs[$key]['timePer']  = $timePer;
 			$logs[$key]['timeRate'] = $timeRate;
 		}

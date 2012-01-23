@@ -59,7 +59,7 @@
 						<{strip}>
 						<pre class="info <{$log.typeName}>" style="position:relative;">
 							<div style="position: relative; z-index: 1;"><{$log.message|escape}></div>
-							<div style="height: 100%; width: <{$log.timeRate}>px; background: #c5d9a3; position: absolute; top: 0; left: 0;"></div><{* TODO >> move to css *}>
+							<div style="height: 100%; width: <{$lastTimeRate}>px; border-right: #d4e6b5 <{$increce}>px solid; background: #c8d9ab; position: absolute; top: 0; left: 0;"></div><{* TODO >> move to css *}>
 						</pre>
 						<{/strip}>
 						<{if $log.info}>
