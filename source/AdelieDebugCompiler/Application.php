@@ -23,6 +23,10 @@ class AdelieDebugCompiler_Application
 	protected $syntaxChecker = null;
 
 	protected $source = '';
+	protected $versionInfo = array(
+		'build'    => null,
+		'datetime' => null,
+	);
 
 	public function __construct(array $config = array())
 	{
@@ -54,6 +58,7 @@ class AdelieDebugCompiler_Application
 			$this->_minimize();
 			$this->_addDocComent();
 			$this->_outputFile();
+			$this->_makeVersionFile();
 		}
 		catch ( Exception $e )
 		{
@@ -98,6 +103,11 @@ class AdelieDebugCompiler_Application
 		$constants  = "define('ADELIE_DEBUG_BUILD', true);\n";
 		$constants .= "define('ADELIE_DEBUG_BUILD_TIME', $now);\n";
 		$this->source .= $constants;
+
+		$this->versionInfo = array(
+			'build'    => $now,
+			'datetime' => date('Y-m-d H:i:s', $now),
+		);
 	}
 
 	protected function _addClassLoader()
@@ -158,6 +168,19 @@ class AdelieDebugCompiler_Application
 		}
 	}
 
+	protected function _makeVersionFile()
+	{
+		$filename = 'build/version';
+		$contents = json_encode($this->versionInfo);
+
+		$writtenBytes = file_put_contents($filename, $contents);
+
+		if ( $writtenBytes === false )
+		{
+			throw new RuntimeException("Failed to write file: $filename");
+		}
+	}
+	
 	protected function _addDocComent()
 	{
 		$docComment = $this->_getDocComment();
