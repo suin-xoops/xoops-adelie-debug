@@ -17,18 +17,22 @@ class AdelieDebug_Debug_XoopsLogger extends XoopsLogger
 	{
 	}
 
-	public function instance()
+	/**
+	 * @static
+	 * @return AdelieDebug_Debug_XoopsLogger
+	 */
+	public static function getInstance()
 	{
-		static $instance = null;
+		$reflectionClass = new ReflectionClass('XoopsLogger');
+		$instanceMethod = $reflectionClass->getMethod('instance');
 
-		if ( $instance === null)
-		{
-			$instance = new self();
+		if ( $instanceMethod->isStatic() === true ) {
+			return AdelieDebug_Debug_XoopsLogger_TP::instance();
+		} else {
+			return AdelieDebug_Debug_XoopsLogger_XCL::instance();
 		}
-
-		return $instance;
 	}
-
+	
 	public function setLogger(AdelieDebug_Debug_Logger $logger)
 	{
 		$this->logger = $logger;
