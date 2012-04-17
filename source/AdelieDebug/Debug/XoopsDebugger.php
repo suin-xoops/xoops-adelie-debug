@@ -12,10 +12,16 @@
 class AdelieDebug_Debug_XoopsDebugger extends Legacy_AbstractDebugger
 {
 	protected $logger = null;
+	protected $isDebugRenderSystem = false;
 
 	public function __construct(AdelieDebug_Debug_Logger $logger)
 	{
 		$this->logger = $logger;
+	}
+
+	public function enableDebugRenderSystem()
+	{
+		$this->isDebugRenderSystem = true;
 	}
 
 	public function prepare()
@@ -30,5 +36,10 @@ class AdelieDebug_Debug_XoopsDebugger extends Legacy_AbstractDebugger
 		$root = XCube_Root::getSingleton();
 		$root->mController->mLogger = $xoopsLogger;
 		$root->mController->mDB->setLogger($xoopsLogger);
+	}
+
+	public function isDebugRenderSystem()
+	{
+		return $this->isDebugRenderSystem;
 	}
 }

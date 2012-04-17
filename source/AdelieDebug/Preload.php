@@ -29,6 +29,12 @@ class AdelieDebug_Preload extends XCube_ActionFilter
 	public function setupDebugEventHandler($instance, $debugMode)
 	{
 		$instance = new AdelieDebug_Debug_XoopsDebugger($this->debugger->logger);
+
+		if ( $debugMode === XOOPS_DEBUG_SMARTY )
+		{
+			$instance->enableDebugRenderSystem();
+		}
+
 		$this->debugger->enableErrorReporting(); // Legacy_Controller::_setupDebugger() で error_reproting = 0 にされちゃってるので必要
 	}
 
