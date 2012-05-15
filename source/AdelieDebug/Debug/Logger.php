@@ -21,6 +21,7 @@ class AdelieDebug_Debug_Logger
 	const TYPE_MESSAGE   = 128;
 	const TYPE_SYNOPSYS  = 256;
 	const TYPE_TRIGGER_DELEGATE = 512;
+	const TYPE_VIEW = 1024;
 
 	protected $typeNames = array(
 		self::TYPE_UNKOWN    => 'UNKNOWN',
@@ -33,6 +34,7 @@ class AdelieDebug_Debug_Logger
 		self::TYPE_MESSAGE   => 'MESSAGE',
 		self::TYPE_SYNOPSYS  => 'SYNOPSYS',
 		self::TYPE_TRIGGER_DELEGATE => 'DELEGATE',
+		self::TYPE_VIEW  => 'VIEW',
 	);
 
 	protected $id = 0;
@@ -133,6 +135,11 @@ class AdelieDebug_Debug_Logger
 	{
 		$message = sprintf("triggered %s", $delegateName);
 		$this->add($message, self::TYPE_TRIGGER_DELEGATE);
+	}
+
+	public function addView($message)
+	{
+		$this->add($message, self::TYPE_VIEW);
 	}
 
 	protected function _incrementId()

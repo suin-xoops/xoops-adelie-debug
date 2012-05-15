@@ -9,8 +9,12 @@
  *
  */
 
+/**
+ * @property AdelieDebug_Debug_Logger $logger
+ */
 class AdelieDebug_Debug_Main
 {
+	/** @var AdelieDebug_Debug_Logger */
 	protected $logger           = null;
 	protected $errorHandler     = null;
 	protected $exceptionHandler = null;

@@ -2,6 +2,7 @@
 
 class AdelieDebug_Preload extends XCube_ActionFilter
 {
+	/** @var AdelieDebug_Debug_Main */
 	protected $debugger = null;
 
 	public function preFilter()
@@ -38,6 +39,11 @@ class AdelieDebug_Preload extends XCube_ActionFilter
 		$this->debugger->enableErrorReporting(); // Legacy_Controller::_setupDebugger() で error_reproting = 0 にされちゃってるので必要
 	}
 
+	public function addOutputFilterToXoopsTpl(XoopsTpl $xoopsTpl)
+	{
+		$xoopsTpl->register_outputfilter(array($this, 'filterSmartyOutput'));
+	}
+
 	protected function _bootstrap()
 	{
 		if ( defined('ADELIE_DEBUG_BUILD') === true )
@@ -65,10 +71,30 @@ class AdelieDebug_Preload extends XCube_ActionFilter
 	{
 		$this->mRoot->mDelegateManager->add('Legacypage.Top.Access', array($this, 'topAccessEventHandler'), 0);
 		$this->mController->mSetupDebugger->add(array($this, 'setupDebugEventHandler'), 99999);
+		$this->mRoot->mDelegateManager->add('XoopsTpl.New', array($this, 'addOutputFilterToXoopsTpl'));
 	}
 
 	protected function _isAdelieDebugPage()
 	{
 		return ( strpos($_SERVER['REQUEST_URI'], 'index.php/debug') !== false );
+	}
+
+	public function filterSmartyOutput($output, $xoopsTpl)
+	{
+		$steps = debug_backtrace();
+
+		foreach ( $steps as $step )
+		{
+			if ( $step['function'] === 'fetch' and $step['class'] === 'Smarty' and isset($step['args'][0]) === true )
+			{
+				$this->debugger->logger->addView(sprintf('Render template: %s', $step['args'][0]));
+				return $output;
+			}
+		}
+
+		// 上のループで見つからなかった場合
+		$this->debugger->logger->addView('Render a template, but template name is unknown...');
+
+		return $output;
 	}
 }

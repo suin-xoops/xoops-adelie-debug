@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6f48f8e-e223-436a-9469-3381f14f982f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/xoops-adelie-debug.iml" afterPath="$PROJECT_DIR$/.idea/xoops-adelie-debug.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/version" afterPath="$PROJECT_DIR$/build/version" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/AdelieDebugCompiler/Application.php" afterPath="$PROJECT_DIR$/source/AdelieDebugCompiler/Application.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/AdelieDebug.class.php" afterPath="$PROJECT_DIR$/build/AdelieDebug.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/AdelieDebug/Debug/Logger.php" afterPath="$PROJECT_DIR$/source/AdelieDebug/Debug/Logger.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/AdelieDebug/Debug/Main.php" afterPath="$PROJECT_DIR$/source/AdelieDebug/Debug/Main.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/AdelieDebug/Preload.php" afterPath="$PROJECT_DIR$/source/AdelieDebug/Preload.php" />
     </list>
     <ignored path="xoops-adelie-debug.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,10 +30,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Application.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Application.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/AdelieDebugCompiler/Application.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="34" selection-start="3649" selection-end="3656" vertical-scroll-proportion="0.47249648">
+            <state line="172" column="34" selection-start="3649" selection-end="3656" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="template.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../Private/pack2011/html/class/template.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="132" column="31" selection-start="5000" selection-end="5018" vertical-scroll-proportion="163.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Preload.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Preload.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="97" column="23" selection-start="2525" selection-end="2525" vertical-scroll-proportion="0.7146974">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Debug/Main.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="37" selection-start="341" selection-end="341" vertical-scroll-proportion="-6.769231">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Logger.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Debug/Logger.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="141" column="44" selection-start="2995" selection-end="2995" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Smarty.class.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../Private/pack2011/xoops_trust_path/libs/smarty/Smarty.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1116" column="33" selection-start="31652" selection-end="31666" vertical-scroll-proportion="27.0">
               <folding />
             </state>
           </provider>
@@ -36,10 +86,14 @@
       </file>
     </leaf>
   </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
   <component name="Git.Settings">
-    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
-    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
     <option name="LINE_SEPARATORS_CONVERSION" value="ASK" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
@@ -48,8 +102,16 @@
         <option value="$PROJECT_DIR$/source/AdelieDebug/Controller/Report/Index.php" />
         <option value="$PROJECT_DIR$/source/AdelieDebug/Template/Report/Index.tpl" />
         <option value="$PROJECT_DIR$/source/AdelieDebugCompiler/Application.php" />
+        <option value="$PROJECT_DIR$/source/AdelieDebug/Debug/Logger.php" />
+        <option value="$PROJECT_DIR$/source/AdelieDebug/Debug/Main.php" />
+        <option value="$PROJECT_DIR$/source/AdelieDebug/Preload.php" />
       </list>
     </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
+    <include_path>
+      <path value="$PROJECT_DIR$/../../Private/pack2011" />
+    </include_path>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
@@ -86,15 +148,20 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.sourceCode.PHP" />
-    <property name="options.searchVisible" value="true" />
+    <property name="options.lastSelected" value="reference.webide.settings.project.settings.php" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method>
+        <option name="PhingTarget" enabled="false" />
+      </method>
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -176,7 +243,10 @@
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -217,7 +287,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/AdelieDebugCompiler/Application.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="34" selection-start="3649" selection-end="3656" vertical-scroll-proportion="0.47249648">
+        <state line="172" column="34" selection-start="3649" selection-end="3656" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Bluemoon/michellek/www/preload/QuickManageBlock.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="54" selection-start="512" selection-end="618" vertical-scroll-proportion="0.44380403">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Bluemoon/michellek/xoops_trust_path/libs/altsys/compilehookadmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.1066282">
+          <folding>
+            <marker date="1334427088000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1334427088000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1334427088000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1334427088000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1334427088000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Private/pack2011/xoops_trust_path/libs/smarty/Smarty.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1116" column="33" selection-start="31652" selection-end="31666" vertical-scroll-proportion="27.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Application.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.920792">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Private/pack2011/html/class/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="132" column="31" selection-start="5000" selection-end="5018" vertical-scroll-proportion="163.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Debug/Logger.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="44" selection-start="2995" selection-end="2995" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Debug/Main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="37" selection-start="341" selection-end="341" vertical-scroll-proportion="-6.769231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Preload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="23" selection-start="2525" selection-end="2525" vertical-scroll-proportion="0.7146974">
           <folding />
         </state>
       </provider>
