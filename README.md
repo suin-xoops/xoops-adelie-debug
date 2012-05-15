@@ -1,56 +1,73 @@
-h1. AdelieDebug
+# AdelieDebug
 
 XOOPS Cube Legacy でモジュール・プリロードなどを開発するデベロッパー向けのパワフルな開発支援ツールです。
 
-h2. 特徴
+![](https://lh3.googleusercontent.com/-6eASUD-qeYk/TwaPZpHaY9I/AAAAAAAABno/GcZuarntiGM/s400/%2525E3%252582%2525B9%2525E3%252582%2525AF%2525E3%252583%2525AA%2525E3%252583%2525BC%2525E3%252583%2525B3%2525E3%252582%2525B7%2525E3%252583%2525A7%2525E3%252583%252583%2525E3%252583%252588%2525202012-01-06%25252014.14.33.png)
 
-h3. 1.見やすいデバッグ画面
+## 特徴
+
+### 1.見やすいデバッグ画面
 
 * タイムライン表示: PHPやSQLのログをすべて、ひとつのタイムラインに集約。処理の前後関係を分かりやすくする工夫。
 * エラーをハイライト表示: SQLやPHPのエラーはハイライトで表示されるので視覚的。
 
-h3. 2.便利なデバッグ関数
+### 2.便利なデバッグ関数
 
 * adump(mixed[, mixed, ...]): var_dump()を preタグ で囲んで見やすくした上に、関数が何処に書かれているかまで表示。
 * atrace(): 処理経路をトレースします。関数がどこから呼ばれてるから一目瞭然。
 * awhich(object または class_name_string): クラスや関数がどのファイルの何行目で定義されているかを表示。
 * asynop(object または class_name_string): クラスの実装の概要を表示します。
 
-h3. 3.XOOPS Cube Legacyのためのツールであること
+### 3.XOOPS Cube Legacyのためのツールであること
 
 * もう var_dump() のあとに exit() を付けたり、<{stdout}>をテーマに書く必要はありません。AdelieDebugはXOOPSのob_bufferを自動的に回避するからです。
 * XML出力画面にvar_dump()してしまって、Ajaxのテストがうまくできない、なんてことはありません。AdelieDebugはAJAXリクエストのときやHTML出力以外のコンテクストではデバッグ出力を自動でオフにします。
 
-h3. 4.実践で使われているツールであること
+### 4.実践で使われているツールであること
 
 * 開発者が仕事でモジュールを開発するときに使っているツールなのです。
 
-h2. 基本的な使い方
+その他詳細な紹介は[XOOPS Cube & TOKYOPenでパワフルなデバッグツールAdelieDebug | Suinasia](http://suin.asia/2012/01/06/xoops-adelie-debug)を御覧ください。
 
-ビルド build/AdelieDebug.class.php をあなたの XOOPS Cube の preload に置くだけです。
+
+## 基本的な使い方
+
+### インストール
+
+プリロード [AdelieDebug.class.php](https://raw.github.com/suin/xoops-adelie-debug/master/build/AdelieDebug.class.php) をあなたの XOOPS Cube の preload に置くだけです。
+
+wgetでインストールする方法:
+
+```
+cd /path/to/your/xoopscube/html/preload
+wget https://raw.github.com/suin/xoops-adelie-debug/master/build/AdelieDebug.class.php
+```
+
+### アンインストール
+
 不要になった場合は、このプリロードを削除します。
 
-h2. コンパイル
+## コンパイル
 
 以下の情報は、AdelieDebug自体をカスタマイズしたい人にのみ関係します。
 
-h3. ソースコード
+### ソースコード
 
 ビルド前のソースコードは source にあります。
 ビルド前開発時はシンボリックリンクを使うと便利です。
 
-<pre>
+```
 ln -s ~/Projects/xoops-adelie-debug/source/AdelieDebug/Preload.php /var/www/html/preload/AdelieDebug_Preload.class.php
-</pre>
+```
 
-h3. ビルド
+### ビルド
 
 コマンドラインで php compile.php を叩くとビルドできます。
 ビルドには yuicompressor が必要です。~/bin/yuicompressor-2.4.6.jar に置いてください。
 
-h2. Tips
+## Tips
 
-h3. Smartyでadump()を使う
+### Smartyでadump()を使う
 
-<pre><{$variable|@adump}></pre>
+```<{$variable|@adump}>```のようにすると、テンプレートでも変数の中身をダンプすることができます。
 

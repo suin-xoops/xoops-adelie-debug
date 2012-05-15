@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6f48f8e-e223-436a-9469-3381f14f982f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/xoops-adelie-debug.iml" afterPath="$PROJECT_DIR$/.idea/xoops-adelie-debug.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/version" afterPath="$PROJECT_DIR$/build/version" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/README.textile" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/AdelieDebug.class.php" afterPath="$PROJECT_DIR$/build/AdelieDebug.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/AdelieDebug/Debug/Logger.php" afterPath="$PROJECT_DIR$/source/AdelieDebug/Debug/Logger.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/AdelieDebug/Debug/Main.php" afterPath="$PROJECT_DIR$/source/AdelieDebug/Debug/Main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/AdelieDebug/Preload.php" afterPath="$PROJECT_DIR$/source/AdelieDebug/Preload.php" />
     </list>
     <ignored path="xoops-adelie-debug.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,7 +46,7 @@
       <file leaf-file-name="Preload.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Preload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="23" selection-start="2525" selection-end="2525" vertical-scroll-proportion="0.7146974">
+            <state line="100" column="0" selection-start="2531" selection-end="2531" vertical-scroll-proportion="0.8097983">
               <folding />
             </state>
           </provider>
@@ -349,7 +344,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/AdelieDebug/Preload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="23" selection-start="2525" selection-end="2525" vertical-scroll-proportion="0.7146974">
+        <state line="100" column="0" selection-start="2531" selection-end="2531" vertical-scroll-proportion="0.8097983">
           <folding />
         </state>
       </provider>
