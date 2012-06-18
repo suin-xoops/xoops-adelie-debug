@@ -13,8 +13,13 @@ if ( class_exists('Smarty') === false )
 {
 	if ( file_exists(XOOPS_ROOT_PATH.'/class/smarty/Smarty.class.php') === true )
 	{
-		// XOOPS Cube Legacy
+		// XOOPS Cube Legacy 2.1
 		require_once XOOPS_ROOT_PATH.'/class/smarty/Smarty.class.php';
+	}
+	elseif ( file_exists(XOOPS_TRUST_PATH.'/libs/smarty/Smarty.class.php') === true )
+	{
+		// XOOPS Cube Legacy 2.2
+		require_once XOOPS_TRUST_PATH.'/libs/smarty/Smarty.class.php';
 	}
 	else
 	{
