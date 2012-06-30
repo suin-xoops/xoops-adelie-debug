@@ -41,7 +41,14 @@ class AdelieDebug_Preload extends XCube_ActionFilter
 
 	public function addOutputFilterToXoopsTpl(XoopsTpl $xoopsTpl)
 	{
-		$xoopsTpl->register_outputfilter(array($this, 'filterSmartyOutput'));
+		if ( method_exists($xoopsTpl, 'registerFilter') === true )
+		{
+			$xoopsTpl->registerFilter('output', array($this, 'filterSmartyOutput'));
+		}
+		else
+		{
+			$xoopsTpl->register_outputfilter(array($this, 'filterSmartyOutput'));
+		}
 	}
 
 	protected function _bootstrap()
