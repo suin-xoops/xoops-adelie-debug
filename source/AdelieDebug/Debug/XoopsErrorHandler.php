@@ -9,22 +9,52 @@
  *
  */
 
-class AdelieDebug_Debug_XoopsErrorHandler extends XoopsErrorHandler
+$reflectionMethod = new ReflectionMethod('XoopsErrorHandler', 'getInstance');
+
+if ( $reflectionMethod->isStatic() === true )
 {
-	public function __construct()
+	class AdelieDebug_Debug_XoopsErrorHandler extends XoopsErrorHandler
 	{
-		// 親のコンストラクタの処理を封じる
-	}
-
-	public function getInstance()
-	{
-		static $instance = null;
-
-		if ( $instance === null )
+		public function __construct()
 		{
-			$instance = new self();
+			// 親のコンストラクタの処理を封じる
 		}
 
-		return $instance;
+		public static function getInstance()
+		{
+			static $instance = null;
+
+			if ( $instance === null )
+			{
+				$instance = new self();
+			}
+
+			return $instance;
+		}
 	}
 }
+else
+{
+	class AdelieDebug_Debug_XoopsErrorHandler extends XoopsErrorHandler
+	{
+		public function __construct()
+		{
+			// 親のコンストラクタの処理を封じる
+		}
+
+		public function getInstance()
+		{
+			static $instance = null;
+
+			if ( $instance === null )
+			{
+				$instance = new self();
+			}
+
+			return $instance;
+		}
+	}
+}
+
+
+
