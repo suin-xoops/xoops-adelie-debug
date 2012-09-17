@@ -47,6 +47,18 @@ wget https://raw.github.com/suin/xoops-adelie-debug/master/build/AdelieDebug.cla
 
 不要になった場合は、このプリロードを削除します。
 
+## 設定
+
+### ADELIE_DEBUG_ERROR_REPORTING
+
+定数 `ADELIE_DEBUG_ERROR_REPORTING` を `mainfile.php` にセットすることで、AdelieDebugのエラーレポーティングレベルを調整することができます。この定数がセットされていなければ、`error_reporting(-1)` になります。すなわち、すべてのエラーを通知します。
+
+この設定は通常は使用すべきではありません。しかし、XOOPS Cubeでは、PHP5.3以降の環境で非推奨エラーやストリクトエラーを数多く発生させます。この多数の重要でないエラーは重要なエラーを見えにくくします。そのような開発効率に多くな影響が出る場合に限り、`ADELIE_DEBUG_ERROR_REPORTING` を調整すべきです。
+
+```
+	define('ADELIE_DEBUG_ERROR_REPORTING', E_ALL & ~E_DEPRECATED & ~E_STRICT);
+```
+
 ## コンパイル
 
 以下の情報は、AdelieDebug自体をカスタマイズしたい人にのみ関係します。
