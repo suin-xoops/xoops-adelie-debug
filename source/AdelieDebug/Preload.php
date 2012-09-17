@@ -27,7 +27,7 @@ class AdelieDebug_Preload extends XCube_ActionFilter
 		die;
 	}
 
-	public function setupDebugEventHandler($instance, $debugMode)
+	public function setupDebugEventHandler(&$instance, $debugMode)
 	{
 		$instance = new AdelieDebug_Debug_XoopsDebugger($this->debugger->logger);
 
