@@ -9,6 +9,11 @@
  *
  */
 
+// Support for momonga
+if ( class_exists('Legacy_AbstractDebugger') === false and class_exists('Xcore_AbstractDebugger') ) {
+	class Legacy_AbstractDebugger extends Xcore_AbstractDebugger {}
+}
+
 class AdelieDebug_Debug_XoopsDebugger extends Legacy_AbstractDebugger
 {
 	protected $logger = null;
