@@ -31,6 +31,9 @@
 	</div>
 	
 	<div class="adelieDebugClearBoth"></div>
+	<a onclick="javascript:document.getElementById('adelieDebugDetail').style.display='block'">[ open detail ]</a>
+	<a onclick="javascript:document.getElementById('adelieDebugDetail').style.display='none'">[ close detail ]</a>
+<div style="display:none;" id="adelieDebugDetail">
 
 	<p class="h2">Timeline</p>
 	<div id="adelieDebugPhpErrors">
@@ -127,4 +130,5 @@
 			<p>There is no values.</p>
 		<{/if}>
 	<{/foreach}>
+</div>
 </div>
