@@ -31,6 +31,11 @@ if ( $reflectionMethod->isStatic() === true )
 
 			return $instance;
 		}
+
+		public static function &getInstanceWrapper()
+		{
+			return self::getInstance();
+		}
 	}
 }
 else
@@ -42,7 +47,7 @@ else
 			// 親のコンストラクタの処理を封じる
 		}
 
-		public function getInstance()
+		public function &getInstance()
 		{
 			static $instance = null;
 
@@ -52,6 +57,12 @@ else
 			}
 
 			return $instance;
+		}
+
+		public static function &getInstanceWrapper()
+		{
+			$obj = new self();
+			return $obj->getInstance();
 		}
 	}
 }

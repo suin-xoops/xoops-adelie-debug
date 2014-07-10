@@ -26,7 +26,7 @@ class AdelieDebug_Debug_XoopsLogger extends XoopsLogger
 		$reflectionClass = new ReflectionClass('XoopsLogger');
 		$instanceMethod = $reflectionClass->getMethod('instance');
 
-		if ( $instanceMethod->isStatic() === true ) {
+		if ( $instanceMethod->returnsReference() === false ) {
 			return AdelieDebug_Debug_XoopsLogger_TP::instance();
 		} else {
 			return AdelieDebug_Debug_XoopsLogger_XCL::instance();
