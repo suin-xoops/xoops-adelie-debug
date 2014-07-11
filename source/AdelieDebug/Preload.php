@@ -39,7 +39,7 @@ class AdelieDebug_Preload extends XCube_ActionFilter
 		$this->debugger->enableErrorReporting(); // Legacy_Controller::_setupDebugger() で error_reproting = 0 にされちゃってるので必要
 	}
 
-	public function addOutputFilterToXoopsTpl(XoopsTpl $xoopsTpl)
+	public function addOutputFilterToXoopsTpl(Smarty $xoopsTpl)
 	{
 		if ( method_exists($xoopsTpl, 'registerFilter') === true )
 		{
