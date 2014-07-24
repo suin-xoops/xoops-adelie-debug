@@ -27,7 +27,7 @@ class AdelieDebug_Debug_Trace
 		for ( $i = 0; $i < $minus; $i ++ )
 		{
 			$trace = preg_replace("/.*\n#1([^\d])/s", '#1$1', $trace);
-			$trace = preg_replace ('/^#(\d+)/me', '\'#\' . ($1 - 1)', $trace);
+			$trace = preg_replace_callback('/^#(\d+)/m', function($m) { return '#' . ($m[1] - 1); }, $trace);
 		}
 
 		if ( $return === true )

@@ -14,7 +14,7 @@
 			<strong><{$typeName}> (<{$ids|@count}>)</strong>
 			<span>...</span>
 			<{foreach from=$ids item="id"}>
-				<a href="#adelieDebugLogId<{$id}>" style="margin: 10px;">#<{$id}></a>
+				<a href="#adelieDebugLogId<{$id}>" style="margin: 10px;" onclick="javascript:document.getElementById('adelieDebugDetail').style.display='block'">#<{$id}></a>
 			<{/foreach}>
 		</div>
 	<{foreachelse}>

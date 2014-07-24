@@ -31,7 +31,7 @@ class AdelieDebug_Debug_XoopsDebugger extends Legacy_AbstractDebugger
 
 	public function prepare()
 	{
-		$GLOBALS['xoopsErrorHandler'] =& AdelieDebug_Debug_XoopsErrorHandler::getInstance();
+		$GLOBALS['xoopsErrorHandler'] =& AdelieDebug_Debug_XoopsErrorHandler::getInstanceWrapper();
 		$GLOBALS['xoopsErrorHandler']->activate(false);
 
 		$xoopsLogger = AdelieDebug_Debug_XoopsLogger::getInstance();
